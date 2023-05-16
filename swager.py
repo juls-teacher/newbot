@@ -6,6 +6,8 @@ from schema import MessageSchema
 
 routes = web.RouteTableDef()
 
+
+
 @docs(
    tags=["telegram"],
    summary="Send message API",

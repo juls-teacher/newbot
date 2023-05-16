@@ -2,16 +2,15 @@ import aioredis
 import os
 import logging
 
-
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+redis = aioredis.from_url("redis://localhost")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-redis = aioredis.from_url("redis://localhost")
 
 
 
@@ -39,4 +38,3 @@ if __name__ == "__main__":
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(~filters.COMMAND, message))
     app.run_polling()
-
